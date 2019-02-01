@@ -1,0 +1,54 @@
+<form #sform="ngForm">
+  <div class="panel panel-primary">
+    <div class="panel-heading"><h3 class="panel-title">Settings</h3></div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="cutoff">CutOff</label>
+        <input
+          id="cutoff"
+          type="number"
+          required
+          class="form-control"
+          name="cutoff"
+          #cutoff="ngModel"
+          [(ngModel)]="testsettings.cutoff"
+          size="100"
+        />
+      </div>
+      <div class="form-group">
+        <label for="no_questions">Questions limit</label>
+        <input
+          id="no_questions"
+          type="number"
+          required
+          class="form-control"
+          name="no_questions"
+          #no_questions="ngModel"
+          [(ngModel)]="testsettings.no_questions"
+        />
+      </div>
+      <div class="form-group">
+        <label for="duration">Test Duration</label>
+        <input
+          id="duration"
+          type="number"
+          required
+          class="form-control"
+          name="test_duration"
+          #test_duration="ngModel"
+          [(ngModel)]="testsettings.test_duration"
+        />
+      </div>
+    </div>
+    <div class="panel-footer">
+      <button
+        class="btn btn-primary"
+        type="submit"
+        (click)="test_settings()"
+        [disabled]="sform.invalid"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</form>

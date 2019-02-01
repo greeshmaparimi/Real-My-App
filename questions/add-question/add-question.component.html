@@ -1,0 +1,138 @@
+<div>
+  <form #addquestionform="ngForm">
+    <div class="panel panel-primary">
+      <div class="panel-heading"><h3 class="panel-title">Add Question</h3></div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label for="qname">Question</label>
+          <input
+            id="qname"
+            name="qname"
+            required
+            type="text"
+            [(ngModel)]="question.qname"
+            class="form-control"
+            size="100"
+            #qname="ngModel"
+          />
+        </div>
+        <div class="form-group">
+          <label for="opt1">option 1</label>
+          <input
+            id="opt1"
+            name="opt1"
+            type="text"
+            required
+            class="form-control"
+            [(ngModel)]="question.opt1"
+            #opt1="ngModel"
+          />
+        </div>
+        <div class="form-group">
+          <label for="opt2">option 2</label>
+          <input
+            id="opt2"
+            name="opt2"
+            type="text"
+            required
+            class="form-control"
+            [(ngModel)]="question.opt2"
+            #opt2="ngModel"
+          />
+        </div>
+        <div class="form-group">
+          <label for="opt3">option 3</label>
+          <input
+            id="opt2"
+            name="opt3"
+            required
+            type="text"
+            class="form-control"
+            [(ngModel)]="question.opt3"
+            #opt3="ngModel"
+          />
+        </div>
+        <div class="form-group">
+          <label for="opt4">option 4</label>
+          <input
+            id="opt4"
+            name="opt4"
+            type="text"
+            required
+            class="form-control"
+            [(ngModel)]="question.opt4"
+            #opt4="ngModel"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Correct Option</label>
+          <div class="form-control">
+            <label for="op1" class="radio-inline">
+              <input
+                id="op1"
+                type="radio"
+                name="correct_option"
+                required
+                [value]="opt1.value"
+                [(ngModel)]="question.copt"
+              />
+              Option 1
+            </label>
+            <label for="op2" class="radio-inline">
+              <input
+                id="op2"
+                type="radio"
+                name="correct_option"
+                [value]="opt2.value"
+                [(ngModel)]="question.copt"
+              />
+              Option 2
+            </label>
+            <label for="op3" class="radio-inline">
+              <input
+                id="op3"
+                type="radio"
+                name="correct_option"
+                [value]="opt3.value"
+                [(ngModel)]="question.copt"
+              />
+              Option 3
+            </label>
+            <label for="op4" class="radio-inline">
+              <input
+                id="op4"
+                type="radio"
+                name="correct_option"
+                [value]="opt4.value"
+                [(ngModel)]="question.copt"
+              />
+              Option 4
+            </label>
+          </div>
+        </div>
+        <!-- <div class="form-group">
+          <label for="copt">correct option</label>
+          <input
+            id="copt"
+            name="copt"
+            type="text"
+            class="form-control"
+            [(ngModel)]="question.copt"
+            #copt="ngModel"
+          />
+        </div> -->
+      </div>
+      <div class="panel-footer">
+        <button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="addquestionform.form.invalid"
+          (click)="addQuestion()"
+        >
+          ADD
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

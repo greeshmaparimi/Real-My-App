@@ -1,0 +1,18 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Questions</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let question of questions ">
+        <td>{{ question.qname }}</td>
+        <td>
+          <button class="btn btn-primary" (click)="deleteQuestion(question)">
+            Remove
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

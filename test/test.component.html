@@ -1,0 +1,141 @@
+<div class="container">
+  <form #userform="ngForm">
+    <div class="panel panel-primary">
+      <div class="panel-heading"><h3 class="panel-title">Registration</h3></div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label for="username" class="control-label">Name : </label>
+          <input
+            id="username"
+            type="text"
+            class="form-control"
+            name="username"
+            [(ngModel)]="user.username"
+            required
+            minlength="8"
+            #username="ngModel"
+          />
+          <div
+            *ngIf="username.invalid && (username.dirty || username.touched)"
+            class="alert alert-danger"
+          >
+            <div style='color:red' *ngIf="username.errors['required']">Name is required.</div>
+            <div style='color:red' *ngIf="username.errors['minlength']">
+              Name must be at least 8 characters long.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email" class="control-label">Email : </label>
+          <input
+            pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+            id="emailid"
+            type="text"
+            class="form-control"
+            name="emailid"
+            [(ngModel)]="user.emailid"
+            required
+            #emailid="ngModel"
+          />
+          <div
+            *ngIf="emailid.invalid && (emailid.dirty || emailid.touched)"
+            class="alert alert-danger"
+          >
+            <div style='color:red' *ngIf="emailid.errors['required']">emailid is required.</div>
+            <div style='color:red' *ngIf="emailid.errors['pattern']">Enter a valid emailid</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="control-label">Password : </label>
+          <input
+            required
+            id="password"
+            type="password"
+            class="form-control"
+            name="password"
+            [(ngModel)]="user.password"
+            minlength="8"
+            #password="ngModel"
+          />
+          <div
+            *ngIf="password.invalid && (password.dirty || password.touched)"
+            class="alert alert-danger"
+          >
+            <div style='color:red' *ngIf="password.errors['required']">password is required.</div>
+            <div style='color:red' *ngIf="password.errors['minlength']">
+              password must be at least 8 characters long.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="phnnum" class="control-label">Contact Number : </label>
+          <input
+            required
+            pattern="^[6-9]\d{9}$"
+            id="phnnum"
+            type="text"
+            class="form-control"
+            name="phnnum"
+            [(ngModel)]="user.phnnum"
+            #phnnum="ngModel"
+            minlength="10"
+            maxlength="10"
+          />
+          <div
+            *ngIf="phnnum.invalid && (phnnum.dirty || phnnum.touched)"
+            class="alert alert-danger"
+          >
+            <div style='color:red' *ngIf="phnnum.errors['required']">
+              Phone number is required.
+            </div>
+            <div style='color:red' *ngIf="phnnum.errors['pattern']">
+              Enter a valid phone number
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">Gender : </label>
+          <div class="form-control">
+            <label class="radio-inline">
+              <input
+                type="radio"
+                name="gender"
+                required
+                #gender="ngModel"
+                value="male"
+                [(ngModel)]="user.gender"
+              />
+              Male
+            </label>
+            <label class="radio-inline">
+              <input
+                type="radio"
+                name="gender"
+                required
+                #gender="ngModel"
+                value="female"
+                [(ngModel)]="user.gender"
+              />
+              Female
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-footer">
+        <button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="userform.form.invalid"
+          (click)="addUser()"
+        >
+          Register
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
